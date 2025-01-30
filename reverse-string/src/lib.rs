@@ -1,3 +1,13 @@
+use unicode_segmentation::UnicodeSegmentation;
+// pub fn reverse(input: &str) -> String {
+//     input.graphemes(true).rev().collect()
+//     // String::from(input).chars().rev().collect::<String>()
+// }
+
 pub fn reverse(input: &str) -> String {
-    String::from(input).chars().rev().collect::<String>()
+    let mut reversed = String::new();
+    for c in input.graphemes(true).rev() {
+        reversed.push_str(c);
+    }
+    reversed
 }
