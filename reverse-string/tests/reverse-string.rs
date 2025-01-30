@@ -9,7 +9,6 @@ fn an_empty_string() {
 }
 
 #[test]
-#[ignore]
 fn a_word() {
     let input = "robot";
     let output = reverse(input);
