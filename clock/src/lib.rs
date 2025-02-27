@@ -25,11 +25,11 @@ impl Clock {
     }
 
     pub fn add_minutes(&self, minutes: i32) -> Self {
-        todo!("Add {minutes} minutes to existing Clock time");
+        Clock::new(self.hours, self.minutes + minutes)
     }
 }
 impl PartialEq for Clock {
     fn eq(&self, other: &Self) -> bool {
-        true
+        self.hours==other.hours && self.minutes==other.minutes
     }
 }
