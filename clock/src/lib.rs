@@ -1,30 +1,44 @@
+use std::fmt;
+
 #[derive(Debug)]
 pub struct Clock {
     hours: i32,
     minutes: i32,
 }
 
+impl fmt::Display for Clock {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "{:02}:{:02}", self.hours , self.minutes)
+    }
+}
+
 impl Clock {
     pub fn new(hours: i32, minutes: i32) -> Self {
-        let total_minutes = hours * 60 + minutes;
-        let minutes_from_midnight = (total_minutes % (24 * 60) + (24 * 60)) % (24 * 60);
-        let total_hours = minutes_from_midnight / 60;
-        let remain_minutes = minutes_from_midnight - total_hours * 60;
         Clock {
-            hours: total_hours,
-            minutes: remain_minutes,
+            hours: (hours + minutes.div_euclid(60)).rem_euclid(24),
+            minutes: minutes.rem_euclid(60),
         }
     }
 
-    pub fn to_string(self) -> String {
-        format!(
-            "{hours:02}:{minutes:02}",
-            hours = self.hours,
-            minutes = self.minutes
-        )
+
+    pub fn div_euc(n: i32) ->i32 {
+        n.div_euclid(60)
     }
 
-    pub fn add_minutes(&self, minutes: i32) -> Self {
+
+    pub fn rem_euc(n: i32) ->i32 {
+        n.rem_euclid(24)
+    }
+
+    // pub fn to_string(self) -> String {
+    //     format!(
+    //         "{hours:02}:{minutes:02}",
+    //         hours = self.hours,
+    //         minutes = self.minutes
+    //     )
+    // }
+
+    pub fn add_minutes(&self, minutes: i32) -> Clock {
         Clock::new(self.hours, self.minutes + minutes)
     }
 }
@@ -33,3 +47,4 @@ impl PartialEq for Clock {
         self.hours==other.hours && self.minutes==other.minutes
     }
 }
+

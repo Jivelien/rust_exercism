@@ -293,3 +293,25 @@ fn eq_with_eq_operator() {
     assert_eq!(Clock::new(1, 12) == Clock::new(1, 12), true);
 }
 
+#[test]
+fn dd() {
+    assert_eq!(Clock::div_euc(-120), -2);
+}
+
+#[test]
+fn dd2() {
+    assert_eq!(Clock::div_euc(-58), -1);
+}
+
+
+#[test]
+fn rem() {
+    assert_eq!(Clock::rem_euc(-2), 22);
+}
+
+#[test]
+fn display() {
+    let c = Clock::new(18, 7);
+    assert_eq!(format!("{c}"),"18:07");
+    assert_eq!(format!("{c}", c = Clock::new(9, 7)),"09:07");
+}
