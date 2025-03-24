@@ -11,27 +11,50 @@ fn no_matches() {
 }
 
 #[test]
+#[ignore]
 fn detects_is_anagram() {
     let word = "solemn";
     let otherWord = "lemons";
-    // assert_eq!(true, is_anagram(word, otherWord));
+    assert_eq!(true, is_anagram(word, otherWord));
+}
+
+
+#[test]
+#[ignore]
+fn our_try_sort() {
     assert_eq!("aaa", rr("hello"));
 }
 
-fn rr(firstWord: &str) -> String {
-    let mut charsFirstWord: Vec<char> = firstWord.chars().collect();
-    // let charsSecondtWord: Vec<char> = secondWord.chars().collect();
+fn gainOwnerShip(s : String) {
 
-    charsFirstWord.sort();
-    charsFirstWord.into_iter().collect()
+   // s.push_str(" add something");
+    let c = s.clone();
 }
 
-fn is_anagram(firstWord: &str, secondWord: &str) -> bool {
-    let charsFirstWord: Vec<char> = firstWord.chars().collect();
-    let charsSecondtWord: Vec<char> = secondWord.chars().collect();
-
-    true
+fn incrementMyValue(s : u32)  -> u32 {
+    s + 1
 }
+
+// #[test]
+// #[ignore]
+// fn our_try_ownership_and_function() {
+//     let s = String::from("Hello");
+//
+//     gainOwnerShip(s);
+//
+//     assert_eq!("aaa", s);
+// }
+
+#[test]
+fn our_try_ownership_for_u32() {
+    let  n=  5;
+
+    let r = incrementMyValue(n);
+
+    // assert_eq!(6, n);
+    assert_eq!(6, r);
+}
+
 
 #[test]
 #[ignore]
