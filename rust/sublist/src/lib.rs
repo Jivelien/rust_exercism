@@ -30,9 +30,6 @@ pub fn sublist(first_list: &[i32], second_list: &[i32]) -> Comparison {
         }
     }
 
-    // match (first_list, second_list) {
-    //     ( [] , [_])
-    // }
 }
 
 pub fn concat_array(list: &[i32]) -> String {
