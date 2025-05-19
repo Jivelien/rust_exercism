@@ -32,7 +32,7 @@ pub fn sublist(first_list: &[i32], second_list: &[i32]) -> Comparison {
 
 }
 
-pub fn concat_array(list: &[i32]) -> String {
+fn concat_array(list: &[i32]) -> String {
     let list_to_string: Vec<String> = list.iter().map(|v| v.to_string()).collect();
 
     list_to_string.join("")
