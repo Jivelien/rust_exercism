@@ -16,6 +16,22 @@ fn equal_array(first_list: &[i32], second_list: &[i32]) -> Comparison {
     Comparison::Unequal
 }
 
+fn foo(first_list: &[i32], second_list: &[i32]) -> Comparison {
+    let l1 = concat_array(first_list);
+    let l2 = concat_array(second_list);
+    
+    
+    if l1.contains(l2.as_str()) {
+        return Comparison::Superlist
+    }
+    if l2.contains(l1.as_str()) {
+        return Comparison::Sublist
+    }
+    Comparison::Unequal
+}
+
+// "125" 
+
 pub fn sublist(first_list: &[i32], second_list: &[i32]) -> Comparison {
     match (first_list.len(), second_list.len()) {
         (0, 0) => Comparison::Equal,
@@ -25,7 +41,7 @@ pub fn sublist(first_list: &[i32], second_list: &[i32]) -> Comparison {
             if first == second {
                 equal_array(first_list, second_list)
             } else {
-                Comparison::Unequal
+                foo(first_list, second_list)
             }
         }
     }
