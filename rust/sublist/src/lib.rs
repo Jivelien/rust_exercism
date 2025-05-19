@@ -7,19 +7,13 @@ pub enum Comparison {
 }
 
 fn equal_array(first_list: &[i32], second_list: &[i32]) -> Comparison {
-    let a = first_list.iter().map(|v| v.to_string());
-    let mut z: String = String::new();
+    let l1 = concat_array(first_list);
+    let l2 = concat_array(second_list);
 
-    for s in a {
-        z = format!("{}{}",z, s);
+    if l1 == l2 {
+        return Comparison::Equal;
     }
-    
-
-    if "hello".contains("ell") {
-        Comparison::Equal
-    } else {
-        Comparison::Unequal
-    }
+    Comparison::Unequal
 }
 
 pub fn sublist(first_list: &[i32], second_list: &[i32]) -> Comparison {
@@ -29,7 +23,7 @@ pub fn sublist(first_list: &[i32], second_list: &[i32]) -> Comparison {
         (_, 0) => Comparison::Superlist,
         (first, second) => {
             if first == second {
-                Comparison::Equal
+                equal_array(first_list, second_list)
             } else {
                 Comparison::Unequal
             }
@@ -39,4 +33,10 @@ pub fn sublist(first_list: &[i32], second_list: &[i32]) -> Comparison {
     // match (first_list, second_list) {
     //     ( [] , [_])
     // }
+}
+
+pub fn concat_array(list: &[i32]) -> String {
+    let list_to_string: Vec<String> = list.iter().map(|v| v.to_string()).collect();
+
+    list_to_string.join("")
 }
