@@ -161,3 +161,12 @@ fn same_digits_but_different_numbers() {
     let expected = Comparison::Unequal;
     assert_eq!(output, expected);
 }
+
+#[test]
+fn is_a_bug() {
+    let list_one: &[i32] = &[11, 12];
+    let list_two: &[i32] = &[1, 12];
+    let output = sublist(list_one, list_two);
+    let expected = Comparison::Unequal;
+    assert_eq!(output, expected);
+}
